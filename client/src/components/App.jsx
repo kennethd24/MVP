@@ -10,7 +10,7 @@ const App = () => {
       method: 'GET',
       url: 'https://tiktok33.p.rapidapi.com/user/feed/ipsy?limit=100',
       headers: {
-        'x-rapidapi-key': '1a39ca1bbemshaf24de47fc36df0p167f00jsn803c9383e10c',
+        'x-rapidapi-key': '',
         'x-rapidapi-host': 'tiktok33.p.rapidapi.com',
       },
     };
