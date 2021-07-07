@@ -2,31 +2,31 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 import UserFeedResult from './UserFeedResult';
-import rapidapi from '../../../config';
+import { rapidapi } from '../../../config';
 
 const App = () => {
   const [newUserFeed, setNewUserFeed] = useState([]);
   const [input, setInput] = useState('');
 
   const getUserFeed = () => {
-    // // slower api
-    // const options = {
-    //   method: 'GET',
-    //   url: 'https://tiktok33.p.rapidapi.com/user/feed/ipsy?limit=100',
-    //   headers: {
-    //     'x-rapidapi-key': rapidapi,
-    //     'x-rapidapi-host': 'tiktok33.p.rapidapi.com',
-    //   },
-    // };
+    // // slower api but 100 posts
     const options = {
       method: 'GET',
-      url: 'https://tik-tok-feed.p.rapidapi.com/',
-      params: { search: 'ipsy', type: 'user-feed', max: '0' },
+      url: 'https://tiktok33.p.rapidapi.com/user/feed/ipsy?limit=100',
       headers: {
         'x-rapidapi-key': rapidapi,
-        'x-rapidapi-host': 'tik-tok-feed.p.rapidapi.com',
+        'x-rapidapi-host': 'tiktok33.p.rapidapi.com',
       },
     };
+    // const options = {
+    //   method: 'GET',
+    //   url: 'https://tik-tok-feed.p.rapidapi.com/',
+    //   params: { search: 'ipsy', type: 'user-feed', max: '0' },
+    //   headers: {
+    //     'x-rapidapi-key': rapidapi,
+    //     'x-rapidapi-host': 'tik-tok-feed.p.rapidapi.com',
+    //   },
+    // };
     axios.request(options).then((response) => {
       setNewUserFeed(response.data);
     }).catch((error) => {
