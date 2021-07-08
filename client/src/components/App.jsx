@@ -1,19 +1,18 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import Table from 'react-bootstrap/Table';
 import Row from 'react-bootstrap/Row';
-import Form from 'react-bootstrap/Form';
-import FormControl from 'react-bootstrap/FormControl';
-import Button from 'react-bootstrap/Button';
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
+import Container from 'react-bootstrap/Container';
+
 import BootstrapTable from 'react-bootstrap-table-next';
+import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
+import paginationFactory from 'react-bootstrap-table2-paginator';
 import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
-import { Line } from 'react-chartjs-2';
+import 'react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css';
+import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css';
 
 import UserFeedResult from './UserFeedResult';
 import Header from './Header';
-import { Container, Col, Card } from "react-bootstrap";
+import Graph from './Graph';
 import { rapidapi } from '../../../config';
 
 const App = () => {
@@ -2297,6 +2296,10 @@ const App = () => {
   const columns = [{
     dataField: 'text',
     text: 'Caption',
+    filter: textFilter(),
+    headerStyle: (colum, colIndex) => {
+      return { minwidth: '300px', textAlign: 'center' };
+    },
   }, {
     dataField: 'webVideoUrl',
     text: 'URL',
@@ -2352,50 +2355,7 @@ const App = () => {
       No Current User
     </div>
   );
-  const data = {
-    labels: ['June 24', 'June 26', 'June 30', 'July 4', 'July 5', 'July 6'],
-    datasets: [
-      {
-        label: 'Play Count',
-        data: [12, 19, 3, 5, 15, 3],
-        fill: false,
-        backgroundColor: 'rgb(255, 99, 132)',
-        borderColor: 'rgba(255, 99, 132, 0.2)',
-        // yAxisID: 'y-axis-1',
-      },
-      // {
-      //   label: '# of No Votes',
-      //   data: [1, 2, 1, 1, 2, 2],
-      //   fill: false,
-      //   backgroundColor: 'rgb(54, 162, 235)',
-      //   borderColor: 'rgba(54, 162, 235, 0.2)',
-      //   yAxisID: 'y-axis-1',
-      // },
-    ],
-  };
 
-  const options = {
-    maintainAspectRatio: false,
-    scales: {
-      yAxes: [
-        {
-          type: 'linear',
-          display: true,
-          position: 'left',
-          id: 'y-axis-1',
-        },
-        // {
-        //   type: 'linear',
-        //   display: true,
-        //   position: 'right',
-        //   id: 'y-axis-2',
-        //   gridLines: {
-        //     drawOnArea: false,
-        //   },
-        // },
-      ],
-    },
-  };
 
   return (
     <Container>
@@ -2404,28 +2364,26 @@ const App = () => {
         <Header handleChange={handleChange} handleSubmit={handleSubmit} input={input} />
       </Container>
       <Container>
-        <Row size="md">
-        <Line
-          data={data}
-          options={options} />
+        <Row>
+          <Graph />
         </Row>
-
         <h3>{newUserFeed[0].authorMeta.name}</h3>
         <Container
           className="table">
           <BootstrapTable
             striped
             hover
+            table-condensed={true}
             bordered={false}
             keyField="id"
             bootstrap4={true}
             data={newUserFeed}
             columns={columns}
+            filter={ filterFactory() }
+            pagination={paginationFactory()}
             noDataIndication={() => <NoDataIndication />}
           />
-
         </Container>
-
       </Container>
     </Container>
   );

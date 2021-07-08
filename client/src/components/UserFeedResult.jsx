@@ -1,24 +1,21 @@
 import React from 'react';
+import BootstrapTable from 'react-bootstrap-table-next';
+// import ToolkitProvider, { CSVExport } from 'react-bootstrap-table2-toolkit';
 
 const userFeedResult = (props) => {
-  const { videoEntry, index } = props;
-  const formatTime = new Date(videoEntry.createTime * 1000).toString().slice(0, 16);
-  const formatLink = (
-    <a href={videoEntry.webVideoUrl}>
-      {videoEntry.webVideoUrl}
-    </a>
-  );
 
+  const columns = [{
+    dataField: 'id',
+    text: 'Product ID'
+  }, {
+    dataField: 'name',
+    text: 'Product Name'
+  }, {
+    dataField: 'price',
+    text: 'Product Price'
+  }];
   return (
-    <tr id={videoEntry.id}>
-      <td>{index + 1}</td>
-      <td>{videoEntry.text}</td>
-      <td>{videoEntry.playCount.toLocaleString('en-US')}</td>
-      <td>{videoEntry.diggCount.toLocaleString('en-US')}</td>
-      <td>{videoEntry.commentCount.toLocaleString('en-US')}</td>
-      <td>{formatTime}</td>
-      <td>{formatLink}</td>
-    </tr>
+<div> hello </div>
   );
 };
 export default userFeedResult;

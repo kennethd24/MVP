@@ -13,7 +13,7 @@ const Header = (props) => {
       <Navbar.Brand href="#home">TikTok Analytics</Navbar.Brand>
       <Nav className="mr-auto">
         <Nav.Link href="#home">Home</Nav.Link>
-        <Nav.Link href="#features">Features</Nav.Link>
+        <Nav.Link href="#features">User List</Nav.Link>
       </Nav>
       <Form inline onSubmit={handleSubmit}>
         <FormControl type="text" placeholder="TikTok Username" onChange={handleChange} value={input} className="mr-sm-2" />
