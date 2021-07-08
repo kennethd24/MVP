@@ -20,7 +20,7 @@ const Header = (props) => {
         <Button type="submit" variant="outline-primary">Analyze</Button>
       </Form>
     </Navbar>
-  )
-}
+  );
+};
 
 export default Header;

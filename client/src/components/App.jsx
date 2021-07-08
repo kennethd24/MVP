@@ -2353,30 +2353,30 @@ const App = () => {
     </div>
   );
   const data = {
-    labels: ['1', '2', '3', '4', '5', '6'],
+    labels: ['June 24', 'June 26', 'June 30', 'July 4', 'July 5', 'July 6'],
     datasets: [
       {
-        label: '# of Votes',
+        label: 'Play Count',
         data: [12, 19, 3, 5, 15, 3],
         fill: false,
         backgroundColor: 'rgb(255, 99, 132)',
         borderColor: 'rgba(255, 99, 132, 0.2)',
-        yAxisID: 'y-axis-1',
+        // yAxisID: 'y-axis-1',
       },
-      {
-        label: '# of No Votes',
-        data: [1, 2, 1, 1, 2, 2],
-        fill: false,
-        backgroundColor: 'rgb(54, 162, 235)',
-        borderColor: 'rgba(54, 162, 235, 0.2)',
-        yAxisID: 'y-axis-1',
-      },
+      // {
+      //   label: '# of No Votes',
+      //   data: [1, 2, 1, 1, 2, 2],
+      //   fill: false,
+      //   backgroundColor: 'rgb(54, 162, 235)',
+      //   borderColor: 'rgba(54, 162, 235, 0.2)',
+      //   yAxisID: 'y-axis-1',
+      // },
     ],
   };
 
   const options = {
+    maintainAspectRatio: false,
     scales: {
-
       yAxes: [
         {
           type: 'linear',
@@ -2384,15 +2384,15 @@ const App = () => {
           position: 'left',
           id: 'y-axis-1',
         },
-        {
-          type: 'linear',
-          display: true,
-          position: 'right',
-          id: 'y-axis-2',
-          gridLines: {
-            drawOnArea: false,
-          },
-        },
+        // {
+        //   type: 'linear',
+        //   display: true,
+        //   position: 'right',
+        //   id: 'y-axis-2',
+        //   gridLines: {
+        //     drawOnArea: false,
+        //   },
+        // },
       ],
     },
   };
@@ -2401,33 +2401,30 @@ const App = () => {
     <Container>
       <h1>Welcome to TikTok Analytics!</h1>
       <Container fluid>
-        <Header handleChange={handleChange} handleSubmit={handleSubmit} input={input}/>
-        {/* <Navbar bg="light" variant="light">
-          <Navbar.Brand href="#home">TikTok Analytics</Navbar.Brand>
-          <Nav className="mr-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#features">Features</Nav.Link>
-          </Nav>
-          <Form inline onSubmit={handleSubmit}>
-            <FormControl type="text" placeholder="TikTok Username" onChange={handleChange} value={input} className="mr-sm-2" />
-            <Button type="submit" variant="outline-primary">Analyze</Button>
-          </Form>
-        </Navbar> */}
+        <Header handleChange={handleChange} handleSubmit={handleSubmit} input={input} />
       </Container>
       <Container>
+        <Row size="md">
         <Line
           data={data}
           options={options} />
-        <h3>(name of user) by (sort State)</h3>
-        <BootstrapTable
-          striped
-          hover
-          keyField="id"
-          bootstrap4={true}
-          data={newUserFeed}
-          columns={columns}
-          noDataIndication={() => <NoDataIndication />}
-        />
+        </Row>
+
+        <h3>{newUserFeed[0].authorMeta.name}</h3>
+        <Container
+          className="table">
+          <BootstrapTable
+            striped
+            hover
+            bordered={false}
+            keyField="id"
+            bootstrap4={true}
+            data={newUserFeed}
+            columns={columns}
+            noDataIndication={() => <NoDataIndication />}
+          />
+
+        </Container>
 
       </Container>
     </Container>

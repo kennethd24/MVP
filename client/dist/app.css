@@ -8,3 +8,7 @@ h1, h3 {
 td {
   overflow-wrap: break-word;
 }
+.table {
+  overflow-y: scroll;
+  height: 500px;
+}
