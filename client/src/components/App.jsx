@@ -12,7 +12,7 @@ import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 import { Line } from 'react-chartjs-2';
 
 import UserFeedResult from './UserFeedResult';
-import Sidebar from './Sidebar';
+import Header from './Header';
 import { Container, Col, Card } from "react-bootstrap";
 import { rapidapi } from '../../../config';
 
@@ -2401,7 +2401,8 @@ const App = () => {
     <Container>
       <h1>Welcome to TikTok Analytics!</h1>
       <Container fluid>
-        <Navbar bg="light" variant="light">
+        <Header handleChange={handleChange} handleSubmit={handleSubmit} input={input}/>
+        {/* <Navbar bg="light" variant="light">
           <Navbar.Brand href="#home">TikTok Analytics</Navbar.Brand>
           <Nav className="mr-auto">
             <Nav.Link href="#home">Home</Nav.Link>
@@ -2411,7 +2412,7 @@ const App = () => {
             <FormControl type="text" placeholder="TikTok Username" onChange={handleChange} value={input} className="mr-sm-2" />
             <Button type="submit" variant="outline-primary">Analyze</Button>
           </Form>
-        </Navbar>
+        </Navbar> */}
       </Container>
       <Container>
         <Line
