@@ -1,8 +1,19 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Table from 'react-bootstrap/Table';
-import UserFeedResult from './UserFeedResult';
+import Row from 'react-bootstrap/Row';
+import Form from 'react-bootstrap/Form';
+import FormControl from 'react-bootstrap/FormControl';
+import Button from 'react-bootstrap/Button';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
+import BootstrapTable from 'react-bootstrap-table-next';
+import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
+import { Line } from 'react-chartjs-2';
 
+import UserFeedResult from './UserFeedResult';
+import Sidebar from './Sidebar';
+import { Container, Col, Card } from "react-bootstrap";
 import { rapidapi } from '../../../config';
 
 const App = () => {
@@ -2252,6 +2263,7 @@ const App = () => {
       },
     ]
   );
+  //const [newUserFeed, setNewUserFeed] = useState([]);
 
   const [input, setInput] = useState('');
 
@@ -2282,35 +2294,142 @@ const App = () => {
     setInput(e.target.value);
   };
 
+  const columns = [{
+    dataField: 'text',
+    text: 'Caption',
+  }, {
+    dataField: 'webVideoUrl',
+    text: 'URL',
+    formatter: (cell) => (
+      <a className="urlContainer" href={cell}>
+        {cell}
+      </a>
+    ),
+  }, {
+    dataField: 'playCount',
+    text: 'Play Count',
+    sort: true,
+    formatter: (cell) => (
+      cell.toLocaleString('en-US')
+    ),
+  }, {
+    dataField: 'diggCount',
+    text: 'Likes',
+    sort: true,
+    formatter: (cell) => (
+      cell.toLocaleString('en-US')
+    ),
+  }, {
+    dataField: 'commentCount',
+    text: 'Comments',
+    sort: true,
+    formatter: (cell) => (
+      cell.toLocaleString('en-US')
+    ),
+  }, {
+    dataField: 'createTime',
+    text: 'Date Posted',
+    sort: true,
+    formatter: (cell) => {
+      let dateObj = cell;
+      if (typeof cell !== 'object') {
+        dateObj = new Date(cell * 1000);
+      }
+      if (cell == null) {
+        return;
+      }
+      return `${(`0${dateObj.getMonth() + 1}`).slice(-2)}/${(`0${dateObj.getDate()}`).slice(-2)}/${dateObj.getFullYear()}`;
+    },
+  },
+  ];
+  const NoDataIndication = () => (
+    <div className="spinner">
+      <div className="rect1" />
+      <div className="rect2" />
+      <div className="rect3" />
+      <div className="rect4" />
+      <div className="rect5" />
+      No Current User
+    </div>
+  );
+  const data = {
+    labels: ['1', '2', '3', '4', '5', '6'],
+    datasets: [
+      {
+        label: '# of Votes',
+        data: [12, 19, 3, 5, 15, 3],
+        fill: false,
+        backgroundColor: 'rgb(255, 99, 132)',
+        borderColor: 'rgba(255, 99, 132, 0.2)',
+        yAxisID: 'y-axis-1',
+      },
+      {
+        label: '# of No Votes',
+        data: [1, 2, 1, 1, 2, 2],
+        fill: false,
+        backgroundColor: 'rgb(54, 162, 235)',
+        borderColor: 'rgba(54, 162, 235, 0.2)',
+        yAxisID: 'y-axis-1',
+      },
+    ],
+  };
 
+  const options = {
+    scales: {
 
+      yAxes: [
+        {
+          type: 'linear',
+          display: true,
+          position: 'left',
+          id: 'y-axis-1',
+        },
+        {
+          type: 'linear',
+          display: true,
+          position: 'right',
+          id: 'y-axis-2',
+          gridLines: {
+            drawOnArea: false,
+          },
+        },
+      ],
+    },
+  };
 
   return (
-    <div>
+    <Container>
       <h1>Welcome to TikTok Analytics!</h1>
-      <form onSubmit={handleSubmit}>
-        <input onChange={handleChange} value={input} placeholder="Insert TikTok username" />
-        <button type="submit">Search</button>
-      </form>
-      <Table striped bordered hover size="sm">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Caption</th>
-            <th>Play Count</th>
-            <th>Likes</th>
-            <th>Comments</th>
-            <th>Date</th>
-            <th>URL</th>
-          </tr>
-        </thead>
-        <tbody>
-          {newUserFeed.map((videoEntry, index) => (
-            <UserFeedResult videoEntry={videoEntry} key={index} index={index} />
-          ))}
-        </tbody>
-      </Table>
-    </div>
+      <Container fluid>
+        <Navbar bg="light" variant="light">
+          <Navbar.Brand href="#home">TikTok Analytics</Navbar.Brand>
+          <Nav className="mr-auto">
+            <Nav.Link href="#home">Home</Nav.Link>
+            <Nav.Link href="#features">Features</Nav.Link>
+          </Nav>
+          <Form inline onSubmit={handleSubmit}>
+            <FormControl type="text" placeholder="TikTok Username" onChange={handleChange} value={input} className="mr-sm-2" />
+            <Button type="submit" variant="outline-primary">Analyze</Button>
+          </Form>
+        </Navbar>
+      </Container>
+      <Container>
+        <Line
+          data={data}
+          options={options} />
+        <h3>(name of user) by (sort State)</h3>
+        <BootstrapTable
+          striped
+          hover
+          keyField="id"
+          bootstrap4={true}
+          data={newUserFeed}
+          columns={columns}
+          noDataIndication={() => <NoDataIndication />}
+        />
+
+      </Container>
+    </Container>
   );
 };
 

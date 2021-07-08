@@ -3,6 +3,11 @@ import React from 'react';
 const userFeedResult = (props) => {
   const { videoEntry, index } = props;
   const formatTime = new Date(videoEntry.createTime * 1000).toString().slice(0, 16);
+  const formatLink = (
+    <a href={videoEntry.webVideoUrl}>
+      {videoEntry.webVideoUrl}
+    </a>
+  );
 
   return (
     <tr id={videoEntry.id}>
@@ -12,8 +17,9 @@ const userFeedResult = (props) => {
       <td>{videoEntry.diggCount.toLocaleString('en-US')}</td>
       <td>{videoEntry.commentCount.toLocaleString('en-US')}</td>
       <td>{formatTime}</td>
-      <td>{videoEntry.webVideoUrl}</td>
+      <td>{formatLink}</td>
     </tr>
   );
 };
 export default userFeedResult;
+
