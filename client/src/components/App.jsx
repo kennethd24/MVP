@@ -3,13 +3,6 @@ import axios from 'axios';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 
-import BootstrapTable from 'react-bootstrap-table-next';
-import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
-import paginationFactory from 'react-bootstrap-table2-paginator';
-import 'react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
-import 'react-bootstrap-table2-filter/dist/react-bootstrap-table2-filter.min.css';
-import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.min.css';
-
 import UserFeedResult from './UserFeedResult';
 import Header from './Header';
 import Graph from './Graph';
@@ -2267,9 +2260,10 @@ const App = () => {
   const [input, setInput] = useState('');
 
   const getUserFeed = () => {
+
     const options = {
       method: 'GET',
-      url: 'https://tiktok33.p.rapidapi.com/user/feed/ipsy?limit=100',
+      url: `https://tiktok33.p.rapidapi.com/user/feed/${input}?limit=100`,
       headers: {
         'x-rapidapi-key': rapidapi,
         'x-rapidapi-host': 'tiktok33.p.rapidapi.com',
@@ -2293,70 +2287,6 @@ const App = () => {
     setInput(e.target.value);
   };
 
-  const columns = [{
-    dataField: 'text',
-    text: 'Caption',
-    filter: textFilter(),
-    headerStyle: (colum, colIndex) => {
-      return { minwidth: '300px', textAlign: 'center' };
-    },
-  }, {
-    dataField: 'webVideoUrl',
-    text: 'URL',
-    formatter: (cell) => (
-      <a className="urlContainer" href={cell}>
-        {cell}
-      </a>
-    ),
-  }, {
-    dataField: 'playCount',
-    text: 'Play Count',
-    sort: true,
-    formatter: (cell) => (
-      cell.toLocaleString('en-US')
-    ),
-  }, {
-    dataField: 'diggCount',
-    text: 'Likes',
-    sort: true,
-    formatter: (cell) => (
-      cell.toLocaleString('en-US')
-    ),
-  }, {
-    dataField: 'commentCount',
-    text: 'Comments',
-    sort: true,
-    formatter: (cell) => (
-      cell.toLocaleString('en-US')
-    ),
-  }, {
-    dataField: 'createTime',
-    text: 'Date Posted',
-    sort: true,
-    formatter: (cell) => {
-      let dateObj = cell;
-      if (typeof cell !== 'object') {
-        dateObj = new Date(cell * 1000);
-      }
-      if (cell == null) {
-        return;
-      }
-      return `${(`0${dateObj.getMonth() + 1}`).slice(-2)}/${(`0${dateObj.getDate()}`).slice(-2)}/${dateObj.getFullYear()}`;
-    },
-  },
-  ];
-  const NoDataIndication = () => (
-    <div className="spinner">
-      <div className="rect1" />
-      <div className="rect2" />
-      <div className="rect3" />
-      <div className="rect4" />
-      <div className="rect5" />
-      No Current User
-    </div>
-  );
-
-
   return (
     <Container>
       <h1>Welcome to TikTok Analytics!</h1>
@@ -2370,19 +2300,8 @@ const App = () => {
         <h3>{newUserFeed[0].authorMeta.name}</h3>
         <Container
           className="table">
-          <BootstrapTable
-            striped
-            hover
-            table-condensed={true}
-            bordered={false}
-            keyField="id"
-            bootstrap4={true}
-            data={newUserFeed}
-            columns={columns}
-            filter={ filterFactory() }
-            pagination={paginationFactory()}
-            noDataIndication={() => <NoDataIndication />}
-          />
+          <UserFeedResult
+            newUserFeed={newUserFeed} />
         </Container>
       </Container>
     </Container>
