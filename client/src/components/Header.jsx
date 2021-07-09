@@ -9,55 +9,33 @@ import Button from 'react-bootstrap/Button';
 
 const Header = (props) => {
   const { handleChange, handleSubmit, input } = props;
-  const [userList, setUserList] = useState([
-    {
-      id: '99284569248576',
-      name: 'boxycharm123',
-      following: 118,
-      fans: 1300000,
-      heart: 32500000,
-      video: 1838,
-    },
-    {
-      id: '9928456924sdfgsd8576',
-      name: 'bsdfgoxycharm123',
-      following: 118,
-      fans: 1300000,
-      heart: 32500000,
-      video: 1838,
-    },
-    {
-      id: '99284569396248576',
-      name: 'boxycharm',
-      following: 118,
-      fans: 1300000,
-      heart: 32500000,
-      video: 1838,
-    },
-  ]);
+  const [userList, setUserList] = useState([]);
 
-  // useEffect(() => {
-  //   (async () => {
-  //     const results = await axios.get('api/users');
-  //     setUserList(results);
-  //     getUsers();
-  //   })();
-  // }, [userList]);
+  const getUsers = () => {
+    if (userList.length > 0) {
+      return (
+        userList.map((item) => (
+          <div key={item.id}>
+            <NavDropdown.Item eventKey={item.id}>{item.name}</NavDropdown.Item>
+          </div>
+        ))
+      );
+    }
+    return null;
+  };
 
-  // const getUsers = () => {
-  //   userList.map((item) => (
-  //     <div>
-  //       <NavDropdown.Item eventKey={item.id}>{item.name}</NavDropdown.Item>
-  //     </div>
-  //   ));
-  // };
-  const getUsers = () => (
-    userList.map((user) => (
-      <div key={user.id}>
-        <NavDropdown.Item>{user.name}</NavDropdown.Item>
-      </div>
-    ))
-  );
+  useEffect(() => {
+    axios.get('api/users')
+      .then((results) => {
+        setUserList(results.data);
+        getUsers();
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  }, [input]);
+
+
 
   return (
     <Navbar bg="light" variant="light">

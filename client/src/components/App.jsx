@@ -7,6 +7,8 @@ import UserFeedResult from './UserFeedResult';
 import Header from './Header';
 import Graph from './Graph';
 import { rapidapi } from '../../../config';
+import "regenerator-runtime/runtime";
+import "core-js/stable";
 
 const App = () => {
   const [newUserFeed, setNewUserFeed] = useState(
@@ -2257,97 +2259,6 @@ const App = () => {
   );
 
   // const [newUserFeed, setNewUserFeed] = useState([]);
-  const firstObj = {
-    "id": "6973771862908210437",
-    "secretID": "6973771862908210437",
-    "text": "The little bubbles get me every time. 🥰🥺 #eyelinerhack #eyelinerhacks #makeuphacks #fyp #fpy #IPSY",
-    "createTime": 1623707795,
-    "authorMeta": {
-        "id": "6655311053578829829",
-        "secUid": "MS4wLjABAAAAUMpXwg_7iqHEXeK0lO5vDtnHbL1_TZg2KTavw-dPiivBfv4a5s1y0eFGlXe_e8pG",
-        "name": "ipsy",
-        "nickName": "IPSY",
-        "verified": true,
-        "signature": "Express your unique beauty with personalized products picked just for you. #IPSY",
-        "avatar": "https://p16-sign-va.tiktokcdn.com/musically-maliva-obj/1654102375582725~c5_1080x1080.jpeg?x-expires=1625774400&x-signature=RTIVvD8LipoQD5RfnJf0XoFpbAk%3D",
-        "following": 118,
-        "fans": 1300000,
-        "heart": 32500000,
-        "video": 1838,
-        "digg": 487
-    },
-    "musicMeta": {
-        "musicId": "6973771732016515846",
-        "musicName": "original sound",
-        "musicAuthor": "IPSY",
-        "musicOriginal": true,
-        "musicAlbum": "",
-        "playUrl": "https://sf16-ies-music-va.tiktokcdn.com/obj/musically-maliva-obj/6973771832831052549.mp3",
-        "coverThumb": "https://p16-sign-va.tiktokcdn.com/musically-maliva-obj/1654102375582725~c5_100x100.jpeg?x-expires=1625774400&x-signature=XgxTeaPpP%2FF8cZ15iSV3PbMbjTY%3D",
-        "coverMedium": "https://p16-sign-va.tiktokcdn.com/musically-maliva-obj/1654102375582725~c5_720x720.jpeg?x-expires=1625774400&x-signature=qd9EGyaHm4UzV3w%2FdRhBxUmXxHg%3D",
-        "coverLarge": "https://p16-sign-va.tiktokcdn.com/musically-maliva-obj/1654102375582725~c5_1080x1080.jpeg?x-expires=1625774400&x-signature=RTIVvD8LipoQD5RfnJf0XoFpbAk%3D",
-        "duration": 15
-    },
-    "covers": {
-        "default": "https://p16-sign-va.tiktokcdn.com/tos-maliva-p-0068/815966f4f6094698b1e4a23e8fd28c8f~tplv-dmt-logom:tos-maliva-p-0000/826c0acc08f548fb8b80eee62f6e2a7e.image?x-expires=1625709600&x-signature=uROs2f%2F%2Bg1mEH5mLlgzCh0c5BNc%3D",
-        "origin": "https://p16-sign-va.tiktokcdn.com/obj/tos-maliva-p-0068/f7b00ba2e56542e6b2b9c74de5214c60_1623707797?x-expires=1625709600&x-signature=YitB07u7uIErn6QDA%2BXPj%2BgpNnI%3D",
-        "dynamic": "https://p16-sign-va.tiktokcdn.com/obj/tos-maliva-p-0068/8b164f2289314ba6ba35680bcad20743_1623707797?x-expires=1625709600&x-signature=%2FO3B%2B9T4RtXgQLr%2BpXw588%2FhEuA%3D"
-    },
-    "webVideoUrl": "https://www.tiktok.com/@ipsy/video/6973771862908210437",
-    "videoUrl": "https://v16-web.tiktok.com/video/tos/useast2a/tos-useast2a-ve-0068c002/ce8de78f9ccb4f7594c186629cbc3e47/?a=1988&br=1794&bt=897&cd=0%7C0%7C1&ch=0&cr=0&cs=0&cv=1&dr=0&ds=3&er=&expire=1625712894&l=202107072054390101890720321F00CF9F&lr=tiktok_m&mime_type=video_mp4&net=0&pl=0&policy=2&qs=0&rc=M21sazVmdTV3NjMzNzczM0ApNTo5NzQ3OWRoNzc6NTk2Zmc2cWE0cnBzLjBgLS1kMTZzczViNGEuLjE0MTJeXmJhLjA6Yw%3D%3D&signature=51215d1f11088114851caaa4fcfde6f3&tk=tt_webid_v2&vl=&vr=",
-    "videoUrlNoWaterMark": "",
-    "videoApiUrlNoWaterMark": "",
-    "videoMeta": {
-        "height": 1024,
-        "width": 576,
-        "duration": 15
-    },
-    "diggCount": 1500000,
-    "shareCount": 9234,
-    "playCount": 14400000,
-    "commentCount": 6136,
-    "downloaded": false,
-    "mentions": [],
-    "hashtags": [
-        {
-            "id": "11444065",
-            "name": "eyelinerhack",
-            "title": "",
-            "cover": ""
-        },
-        {
-            "id": "15663482",
-            "name": "eyelinerhacks",
-            "title": "",
-            "cover": ""
-        },
-        {
-            "id": "11703821",
-            "name": "makeuphacks",
-            "title": "Makeup is an art 💁🏼show us your art using #makeuphacks 💅💄",
-            "cover": "https://p77-va.tiktokcdn.com/obj/musically-maliva-obj/9c032e540c0fa9f04bbc291f0a5f8fb9"
-        },
-        {
-            "id": "229207",
-            "name": "fyp",
-            "title": "",
-            "cover": ""
-        },
-        {
-            "id": "37644733",
-            "name": "fpy",
-            "title": "",
-            "cover": ""
-        },
-        {
-            "id": "376112",
-            "name": "ipsy",
-            "title": "",
-            "cover": ""
-        }
-    ],
-    "effectStickers": []
-}
   const [input, setInput] = useState('');
 
   const postUsers = (input) => {
@@ -2403,7 +2314,7 @@ const App = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // getUserFeed();
+    getUserFeed();
     postUsers(newUserFeed);
   };
 
@@ -2432,16 +2343,11 @@ const App = () => {
       </Container>
       <Container>
         <Row>
-          <Graph />
+          <Graph newUserFeed={newUserFeed} />
         </Row>
         {tableName()}
-        {/* <h3>{tableName}</h3> */}
-        <Container
-          className="table"
-        >
-          <UserFeedResult
-            newUserFeed={newUserFeed}
-          />
+        <Container className="table">
+          <UserFeedResult newUserFeed={newUserFeed} />
         </Container>
       </Container>
     </Container>
