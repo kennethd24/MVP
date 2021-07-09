@@ -1,6 +1,6 @@
 CREATE TABLE users
 (
-    id SERIAL PRIMARY KEY,
+    id text PRIMARY KEY,
     name text NOT NULL,
     following integer NOT NULL,
     fans integer NOT NULL,
@@ -10,9 +10,9 @@ CREATE TABLE users
 
 CREATE TABLE userVideos
 (
-    id SERIAL PRIMARY KEY,
-    user_id integer NOT NULL,
-    webVideoUrl varChar NOT NULL,
+    id text PRIMARY KEY,
+    user_id text NOT NULL,
+    webVideoUrl text NOT NULL,
     playCount integer NOT NULL,
     diggCount integer NOT NULL,
     commentCount integer NOT NULL,
