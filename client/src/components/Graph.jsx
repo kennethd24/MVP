@@ -3,10 +3,13 @@ import { Line } from 'react-chartjs-2';
 
 const Graph = (props) => {
   const { newUserFeed } = props;
+  const sortByDate = newUserFeed.sort(
+    (a, b) => parseFloat(a.createTime) - parseFloat(b.createTime),
+  );
 
   const getDate = () => {
     const dateArr = [];
-    newUserFeed.forEach((item) => {
+    sortByDate.forEach((item) => {
       const formatDate = new Date(item.createTime * 1000).toString().slice(4, 10);
       dateArr.push(formatDate);
     });
@@ -14,21 +17,21 @@ const Graph = (props) => {
   };
   const getPlayCount = () => {
     const playCountArr = [];
-    newUserFeed.forEach((item) => {
+    sortByDate.forEach((item) => {
       playCountArr.push(item.playCount);
     });
     return playCountArr;
   };
   const getLikes = () => {
     const likesArr = [];
-    newUserFeed.forEach((item) => {
+    sortByDate.forEach((item) => {
       likesArr.push(item.diggCount);
     });
     return likesArr;
   };
   const getComments = () => {
     const commentsArr = [];
-    newUserFeed.forEach((item) => {
+    sortByDate.forEach((item) => {
       commentsArr.push(item.commentCount);
     });
     return commentsArr;
@@ -58,7 +61,7 @@ const Graph = (props) => {
         fill: false,
         backgroundColor: 'rgb(5, 88, 9)',
         borderColor: 'rgba(5, 88, 9, 0.2)',
-        // yAxisID: 'y-axis-2',
+        yAxisID: 'y-axis-3',
       },
     ],
   };
@@ -78,6 +81,12 @@ const Graph = (props) => {
           display: true,
           position: 'left',
           id: 'y-axis-2',
+        },
+        {
+          type: 'linear',
+          display: true,
+          position: 'right',
+          id: 'y-axis-3',
         },
       ],
     },

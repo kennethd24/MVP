@@ -2273,7 +2273,7 @@ const App = () => {
     }
     axios.post('api/users', body)
       .then(() => {
-        console.log('successful postUsers')
+        return null;
       })
       .catch((err) => {
         console.error(err);
@@ -2284,7 +2284,7 @@ const App = () => {
     input.forEach(item => {
       axios.post('api/userFeed', item)
         .then(() => {
-          console.log('Success postUserFeed')
+          return null;
         })
         .catch((err) => {
           console.error(err);
@@ -2303,10 +2303,10 @@ const App = () => {
     };
     axios.request(options).then((response) => {
       const results = response.data;
-      const sortByViews = results.sort((a, b) => parseFloat(b.playCount) - parseFloat(a.playCount));
-      setNewUserFeed(sortByViews);
-      postUsers(sortByViews);
-      postUserVideos(sortByViews);
+      const sortByDate= results.sort((a, b) => parseFloat(b.createTime) - parseFloat(a.createTime));
+      setNewUserFeed(sortByDate);
+      postUsers(sortByDate);
+      postUserVideos(sortByDate);
     }).catch((error) => {
       console.error(error);
     });
@@ -2315,7 +2315,6 @@ const App = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     getUserFeed();
-    postUsers(newUserFeed);
   };
 
   const handleChange = (e) => {

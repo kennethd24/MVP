@@ -46,7 +46,8 @@
   },
   "scripts": {
     "start": "nodemon ./server/index.js",
-    "webpack-dev": "webpack --config ./webpack.config.js --mode development -w"
+    "webpack-dev": "webpack --config ./webpack.config.js --mode development -w",
+    "build": "webpack --config ./webpack.config.js --mode=production"
   },
   "repository": {
     "type": "git",
