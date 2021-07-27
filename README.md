@@ -20,8 +20,17 @@ Project is created with:
 * PostgreSQL
 * Chart
 * Bootstrap
+* [TikTok Feed API](https://rapidapi.com/premium-apis-premium-apis-default/api/tiktok33/)
+* [TikTok Embed Videos](https://developers.tiktok.com/doc/embed-videos)
 	
 ## Setup
+
+### Config File
+1. Make copy of example.config.js and rename to config.js
+2. Create rapidapi key from https://rapidapi.com/
+3. Paste into 'FILL_ME_IN'
+4. Update PostgreSQL credentials
+
 ### Initialize project
 To run this project, install it locally using npm:
 
