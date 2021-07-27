@@ -16,6 +16,9 @@ Dashboard to analyze a user's latest 100 videos on TikTok!
 Project is created with:
 * React
 * Express
+* PostgreSQL
+* Chart
+* Bootstrap
 	
 ## Setup
 ### Initialize project
