@@ -1,3 +1,4 @@
+
 # TikTok Analytics
 
 ## Table of contents
@@ -6,11 +7,11 @@
 * [Setup](#setup)
 
 ## General info
-Dashboard to analyze a user's latest 100 videos on TikTok!
+Dashboard to analyze any user's latest 100 videos on TikTok. 
 
+![testing2](https://user-images.githubusercontent.com/78133003/127193362-56d1ae78-3366-44bd-804c-76d9d206cb91.gif)
 
-![testing](https://user-images.githubusercontent.com/78133003/127082272-b462b1f3-6b38-4cda-85ed-da59e242acb1.gif)
-
+To help my girlfriend's weekly task to collect video views on TikTok, I created this project as part of Hack Reactor's 2 day MVP sprint. This project helps visualize data trends and gathers necessary data for competitive intelligence. It also has the functionality to toggle display of specific columns and a CSV exporter if further analyses is needed.
 
 ## Technologies
 Project is created with:
