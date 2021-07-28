@@ -13,7 +13,7 @@ Dashboard to analyze any user's latest 100 videos on TikTok.
   <img src="https://user-images.githubusercontent.com/78133003/127193362-56d1ae78-3366-44bd-804c-76d9d206cb91.gif" alt="animated gif" />
 </p>
 
-To help my girlfriend's monthly task to collect video views and engagements on TikTok, I created this project as part of Hack Reactor's 2 day MVP sprint. This project helps gather, sort, and visualize data trends for competitive and business intelligence. It also has the functionality to toggle display of specific columns and a CSV exporter if further analyses is needed.
+To help a colleague's monthly task to collect video views and engagements on TikTok, I created this project as part of Hack Reactor's 2 day MVP sprint. This project helps gather, sort, and visualize data trends for competitive and business intelligence. It also has the functionality to toggle display of specific columns and a CSV exporter if further analyses is needed.
 
 ## Technologies
 Project was created with:
